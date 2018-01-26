@@ -1,0 +1,23 @@
+name:                reldate
+version:             0.1.0
+github:              "kmein/reldate"
+license:             MIT
+author:              "Kierán Meinhardt"
+maintainer:          "kieran.meinhardt@gmail.com"
+copyright:           "Copyright: (c) 2017 Kierán Meinhardt"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on Github at <https://github.com/kmein/reldate#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- safe
+- time >= 1.9
+- optparse-applicative
+
+executables:
+  reldate:
+    main:                Main.hs
+    source-dirs:         src
