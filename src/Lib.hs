@@ -20,12 +20,10 @@ data Setting
 dates :: Day -> Setting -> [Day]
 dates today (Week d) = weekDays d [today ..]
 dates today (Month o d) =
-    mapMaybe (\m -> weekDays d m `atMay` (o - 1)) $ groupMonths [today ..]
+    mapMaybe (\m -> weekDays d m `atMay` (o - 1)) $
+    groupBy sameMonth [today ..]
   where
-    groupMonths =
-        groupBy $
-        \d1 d2 ->
-             let (y1, m1, _) = toGregorian d1
-                 (y2, m2, _) = toGregorian d2
-             in m1 == m2 && y1 == y2
-
+    sameMonth d1 d2 =
+        let (y1, m1, _) = toGregorian d1
+            (y2, m2, _) = toGregorian d2
+        in m1 == m2 && y1 == y2
